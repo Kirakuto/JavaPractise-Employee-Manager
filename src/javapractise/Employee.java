@@ -10,18 +10,28 @@ package javapractise;
  */
 public class Employee {
     
-    private long id;
+    private static int counter = 0;
+    private final int id;
+    
     private String fullName;
     private Department department;
     private double salary;
     private boolean active;
 
-    public long getId() {
-        return id;
+    public Employee(String fullName, Department department, double salary, boolean active) {
+        this.id = counter++;
+        this.fullName = fullName;
+        this.department = department;
+        this.salary = salary;
+        this.active = active;
+    }
+    public Employee() {
+        this.id = counter++;
+        this.active = true;
     }
 
-    public void setId(long id) {
-        this.id = id;
+    public long getId() {
+        return id;
     }
 
     public String getFullName() {
@@ -55,7 +65,11 @@ public class Employee {
     public void setActive(boolean active) {
         this.active = active;
     }
-    
+
+    @Override
+    public String toString() {
+        return "Employee{" + "id=" + id + ", fullName=" + fullName + ", department=" + department + ", salary=" + salary + ", active=" + active + '}';
+    }
     
     
 }
